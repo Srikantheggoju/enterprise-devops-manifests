@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: enterprise-app
+  labels:
+    app: enterprise-app
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: enterprise-app
+
+  template:
+    metadata:
+      labels:
+        app: enterprise-app
+
+    spec:
+      containers:
+      - name: enterprise-app
+        image: srikantheggoju/enterprise-app:1
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 5000
